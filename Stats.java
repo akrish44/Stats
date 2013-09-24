@@ -2,9 +2,9 @@ public class Stats {
 	public static void main(String[] args) {
 		
 
-		// int[] a = { -8, 2, -10, 0};
+		int[] a = { -8, 2, -10, 0};
 		// int[] b = {-2, 0, 3, 5, 7, 9, 10, 12, 15, 16, 17};
-		int[] c = {2, 4, -1, 0, 2, 2, 0, 8, 2, 0, 2};
+		// int[] c = {2, 4, -1, 0, 2, 2, 0, 8, 2, 0, 2};
 
 		// System.out.println("The maximum is " + findMax(a));
 		// System.out.println("The minimum is " + findMin(a));
@@ -12,7 +12,8 @@ public class Stats {
 		// System.out.println("The median is " + findMedian(b));
 		// System.out.println("The first quartile is " + findQuart1(b));
 		// System.out.println("The third quartile is " + findQuart3(b));
-		System.out.println("The mode is " + findMode(c));
+		// System.out.println("The mode is " + findMode(c));
+		System.out.println("The standard deviation is " + findStandardDev(a));
 	}
 
 
@@ -106,6 +107,7 @@ public class Stats {
 	}
 
 	public static int findMode(int[] c) {
+
 		int value=0;
 		int maxCount=0;
 
@@ -121,10 +123,28 @@ public class Stats {
         }
     }
 
-    return value;
-}
+    	return value;
 	}
 
+	public static findStandardDev(int[] a) {
+
+		double mean = findMean(a);
+		double sum = 0;
+		double change =0;
+
+		for (int i=0; i<a.length; i++) {
+
+			double sdStart = mean - a[i];
+		
+			sum = sum * (sdStart*sdStart);
+
+		}
+
+		double finalSD = Math.sqrt(sum/(a.length));
+
+		return finalSD;
+	}
+}
 
 
 
