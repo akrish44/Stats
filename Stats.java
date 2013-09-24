@@ -1,34 +1,34 @@
 public class Stats {
 	public static void main(String[] args) {
-		
+
 
 		int[] a = { -8, 2, -10, 0};
-		// int[] b = {-2, 0, 3, 5, 7, 9, 10, 12, 15, 16, 17};
+		// int[] b = {-2, 1, 3, 4, 5, 6, 7};
 		// int[] c = {2, 4, -1, 0, 2, 2, 0, 8, 2, 0, 2};
 
-		// System.out.println("The maximum is " + findMax(a));
-		// System.out.println("The minimum is " + findMin(a));
-		// System.out.println("The mean is " + findMean(a));
-		// System.out.println("The median is " + findMedian(b));
-		// System.out.println("The first quartile is " + findQuart1(b));
-		// System.out.println("The third quartile is " + findQuart3(b));
-		// System.out.println("The mode is " + findMode(c));
-		System.out.println("The standard deviation is " + findStandardDev(a));
+		// System.out.println("The maximum is " + max(a));
+		// System.out.println("The minimum is " + min(a));
+		// System.out.println("The mean is " + mean(a));
+		// System.out.println("The median is " + median(b));
+		System.out.println("The first quartile is " + quartile1(b));
+		// System.out.println("The third quartile is " + quartile3(b));
+		// System.out.println("The mode is " + mode(c));
+		// System.out.println("The standard deviation is " + standardDeviation(a));
 	}
 
 
-	public static int findMax(int[] a) {
+	public static int max(int[] a) {
 		int max = a[0]; 
 		for (int i=0; i<a.length; i++) {
 			if (a[i]>max) {
 				max = a[i];
 			}
-	
+
 		}
 		return max;
 	}
 
-	public static int findMin(int[] a) {
+	public static int min(int[] a) {
 		int min = a[0];
 		for (int i=0; i<a.length; i++) {
 			if (a[i]<min) {
@@ -37,8 +37,8 @@ public class Stats {
 		}
 		return min;
 	}
-	
-	public static double findMean(int[] a, int n) {
+
+	public static double mean(int[] a, int n) {
 		double mean =0;
 		int sum = 0;
 		for (int i=0; i<a.length; i++) {
@@ -49,13 +49,13 @@ public class Stats {
 		return mean;
 	}
 
-	public static double findMedian(int[] b) {
+	public static double median(int[] b) {
 		double median = 0;
 		int medianStart = b.length/2;
 
 		for (int i=0; i<b.length; i++) {
-			
-		
+
+
 		if (b.length % 2 ==0) {
 			median = (b[medianStart-1] + b[medianStart]) / 2.0;
 		} else {
@@ -66,47 +66,43 @@ public class Stats {
 
 } 
 
-	public static double findQuart1(int[] b) {
+	public static double quartile1(int[] b) {
 
-		int quart1 = (b.length/4);
-		// int placement = (int)quarter;
-		
-		int meanStart = b[quart1] + b[quart1-1];
-
-		int finalQuart = 0;
-
-		for (int i=0; i<b.length; i++) {
-			
-		
-		if (b.length % 4 ==0) {
-
-			finalQuart = b[quart1];
+		double length = b.length;
+		double quarter = length/4;
+		int placement = (int)quarter;
+		double number = 0.0;
+		double sum = b[placement] + b[placement-1];
+		if (length % 4 !=0) {
+			number = b[placement];
 		} else {
-			finalQuart = meanStart / 2;
+			number = sum/2;
 		}
-	}
-		return finalQuart;
+
+		return number;
 	}
 
-	public static double findQuart3(int[] b) {
+	public static double quart3(int[] b) {
 		int quart3 = ((b.length/4)*3);
 
 		int meanStart = b[quart3] + b[quart3 - 1];
+		int placement = (int)quart3;
+		int sum = b[placement] + b[placement - 1];
 
 		int finalQuart = 0;
 
 		for (int i=0; i<b.length; i++) {
 
-		if((b.length%4==0)) {	
-			finalQuart = meanStart / 2;
+		if((b.length%4!=0)) {	
+			finalQuart = b[placement];
 		} else {
-			finalQuart = b[quart3];
+			finalQuart = sum/2;
 		}
 	} 
 	return finalQuart;
 	}
 
-	public static int findMode(int[] c) {
+	public static int mode(int[] c) {
 
 		int value=0;
 		int maxCount=0;
@@ -126,27 +122,25 @@ public class Stats {
     	return value;
 	}
 
-	public static findStandardDev(int[] a) {
+	public static double standardDeviation(int[] a) {
 
-		double mean = findMean(a);
+		double mean = mean(a);
 		double sum = 0;
 		double change =0;
 
 		for (int i=0; i<a.length; i++) {
 
 			double sdStart = mean - a[i];
-		
+
 			sum = sum * (sdStart*sdStart);
 
 		}
 
-		double finalSD = Math.sqrt(sum/(a.length));
+		double finalSD = Math.sqrt(sum/(a.length-1));
 
 		return finalSD;
 	}
 }
-
-
 
 
 
