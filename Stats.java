@@ -9,7 +9,8 @@ public class Stats {
 		// System.out.println("The minimum is " + findMin(a));
 		// System.out.println("The mean is " + findMean(a));
 		// System.out.println("The median is " + findMedian(b));
-		System.out.println("The first quartile is " + findQuart1(b));
+		// System.out.println("The first quartile is " + findQuart1(b));
+		System.out.println("The third quartile is " + findQuart3(b));
 	}
 
 
@@ -67,7 +68,7 @@ public class Stats {
 		int quart1 = (b.length/4);
 		// int placement = (int)quarter;
 		
-		int sum = b[quart1] + b[quart1-1];
+		int meanStart = b[quart1] + b[quart1-1];
 
 		int finalQuart = 0;
 
@@ -75,17 +76,34 @@ public class Stats {
 			
 		
 		if (b.length % 4 ==0) {
-			finalQuart = sum/2;
+
 			finalQuart = b[quart1];
 		} else {
-			finalQuart = b[quart1];
+			finalQuart = meanStart / 2;
 		}
 	}
 		return finalQuart;
 	}
 
-}
+	public static double findQuart3(int[] b) {
+		int quart3 = ((b.length/4)*3);
 
+		int meanStart = b[quart3] + b[quart3 - 1];
+
+		int finalQuart = 0;
+
+		for (int i=0; i<b.length; i++) {
+
+		if((b.length%4==0)) {	
+			finalQuart = meanStart / 2;
+		} else {
+			finalQuart = b[quart3];
+		}
+	} 
+	return finalQuart;
+	}
+
+}
 
 
 
