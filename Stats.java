@@ -3,14 +3,16 @@ public class Stats {
 		
 
 		// int[] a = { -8, 2, -10, 0};
-		int[] b = {-2, 0, 3, 5, 7, 9, 10, 12, 15, 16, 17};
+		// int[] b = {-2, 0, 3, 5, 7, 9, 10, 12, 15, 16, 17};
+		int[] c = {2, 4, -1, 0, 2, 2, 0, 8, 2, 0, 2};
 
 		// System.out.println("The maximum is " + findMax(a));
 		// System.out.println("The minimum is " + findMin(a));
 		// System.out.println("The mean is " + findMean(a));
 		// System.out.println("The median is " + findMedian(b));
 		// System.out.println("The first quartile is " + findQuart1(b));
-		System.out.println("The third quartile is " + findQuart3(b));
+		// System.out.println("The third quartile is " + findQuart3(b));
+		System.out.println("The mode is " + findMode(c));
 	}
 
 
@@ -103,7 +105,27 @@ public class Stats {
 	return finalQuart;
 	}
 
+	public static int findMode(int[] c) {
+		int value=0;
+		int maxCount=0;
+
+    	for (int i = 0; i < c.length; i++) {
+
+        int count = 0;
+        for (int j = 0; j < c.length; j++) {
+            if (c[j] == c[i]) count++;
+        }
+        if (count > maxCount) {
+            maxCount = count;
+            value = c[i];
+        }
+    }
+
+    return value;
 }
+	}
+
+
 
 
 
