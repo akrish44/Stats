@@ -3,13 +3,13 @@ public class Stats {
 		
 
 		// int[] a = { -8, 2, -10, 0};
-		int[] b = {-1, 0, 2, 4, 7, 8};
+		int[] b = {-2, 0, 3, 5, 7, 9, 10, 12, 15, 16, 17};
 
 		// System.out.println("The maximum is " + findMax(a));
 		// System.out.println("The minimum is " + findMin(a));
 		// System.out.println("The mean is " + findMean(a));
-		System.out.println("The median is " + findMedian(b));
-		// System.out.println("The first quartile is " + findQuart1(b));
+		// System.out.println("The median is " + findMedian(b));
+		System.out.println("The first quartile is " + findQuart1(b));
 	}
 
 
@@ -62,16 +62,30 @@ public class Stats {
 
 } 
 
-	// public static double findQuart1(int[] b) {
-	// 	for (int i=0; i<b.length; i++) {
-	// 		if (b.length%2==0) {
-	// 			quart1Start = b[(b.length/2)];
-	// 			quart1 = 
-	// 		}
+	public static double findQuart1(int[] b) {
+
+		int quart1 = (b.length/4);
+		// int placement = (int)quarter;
+		
+		int sum = b[quart1] + b[quart1-1];
+
+		int finalQuart = 0;
+
+		for (int i=0; i<b.length; i++) {
 			
-	// 	}
-	// }
+		
+		if (b.length % 4 ==0) {
+			finalQuart = sum/2;
+			finalQuart = b[quart1];
+		} else {
+			finalQuart = b[quart1];
+		}
+	}
+		return finalQuart;
+	}
+
 }
+
 
 
 
