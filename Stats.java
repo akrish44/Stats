@@ -4,20 +4,20 @@ public class Stats {
 
 
 
-		int[] a = {-12, -12, 3, 8, 10, 11, 12, 13, 15};
+		int[] a = {-12, -10, 3, 8, 10};
 
-		// System.out.println(max(a));
-		// System.out.println(min(a));
-		// System.out.println(mean(a));
-		// System.out.println(median(a));
-		// System.out.println(quartile1(a));
-		// System.out.println(quartile3(a));
-		// System.out.println(mode(a));
+		System.out.println(max(a));
+		System.out.println(min(a));
+		System.out.println(mean(a));
+		System.out.println(median(a));
+		System.out.println(quartile1(a));
+		System.out.println(quartile3(a));
+		System.out.println(mode(a));
 		System.out.println(standardDeviation(a));
 
 	}
 
-	
+
 	public static int max(int[] a) {
 		int max = a[0]; 
 		for (int i=0; i<a.length; i++) {
@@ -42,7 +42,7 @@ public class Stats {
 
 	public static double mean(int[] a) {
 		double mean =0;
-		int sum = 0;
+		double sum = 0;
 		for (int i=0; i<a.length; i++) {
 			sum =sum + a[i];
 			mean = sum/(a.length);
@@ -64,25 +64,14 @@ public class Stats {
 	}
 
 	public static double quartile1(int[] a) {
-		double length = a.length;
-		double quarter = length/4;
-		int placement = (int)quarter;
-		double quart2 = (length-1)/4;
-		int placement2 = (int)quart2;
-		double quart1=0.0;
-		double sum = a[placement] + a[placement-1];
-		if (length%4 !=0 &&((length-1)%4)==0) {
-			quart1 = a[placement2];
+		double quartile1 = 0.0;
+		int  count = (a.length/2)-1;
+		int[] b = new int[count-1];
+		for(int i=0; i<=count; i++) {
+		b[i] = a[i];
 		}
-		else if (length % 4 !=0) {
-			quart1 = a[placement];
-		} else if(length % 4 !=0 && ((length-1)%4)!=0){
-			quart1 = a[placement-1];
-			
-		} else {
-			quart1 = sum/2;
-		}
-		return quart1;
+		quartile1 = median(b);
+		return quartile1;
 	}
 
 	public static double quartile3(int[] a) {
