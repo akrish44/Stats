@@ -1,10 +1,7 @@
 public class Stats {
 	public static void main(String[] args) {
 
-
-
-
-		int[] a = {-12, -10, 3, 8, 10};
+		int[] a = {-12,-10,3,8,10};
 
 		System.out.println(max(a));
 		System.out.println(min(a));
@@ -45,11 +42,12 @@ public class Stats {
 		double sum = 0;
 		for (int i=0; i<a.length; i++) {
 			sum =sum + a[i];
-			mean = sum/(a.length);
+			mean =sum/(a.length);
 		}
 		return mean;
 	}
 
+	// 1,2,3,4
 
 	public static double median(int[] a) {
 		double median = 0;
@@ -64,49 +62,40 @@ public class Stats {
 	}
 
 	public static double quartile1(int[] a) {
-		double quartile1 = 0.0;
-		int  count = (a.length/2)-1;
-		int[] b = new int[count-1];
-		for(int i=0; i<=count; i++) {
-		b[i] = a[i];
+		double quartile1 =0.0;
+		int count = (a.length/2)-1;
+		int[] b = new int[count+1];
+		for (int i=0; i<=count; i++) {
+			b[i] = a[i];
 		}
 		quartile1 = median(b);
 		return quartile1;
 	}
 
 	public static double quartile3(int[] a) {
-		double length = a.length;
-		double quarter = length/4;
-		double multiply = quarter * 3;
-		int placement = (int)multiply;
-		double quart3=0.0;
-		double sum = a[placement] + a[placement-1];
-		if (length % 4 != 0) {
-			quart3 = a[placement];
-		} else {
-			quart3 = sum/2;
-		}
-		return quart3;
+		double quartile3=0.0;
+		int count = 0;
+		int[] b= new int [count+1];
+		for (int i=0; ) 
 	}
 
 	public static int mode(int[] a) {
-
-		int value=0;
-		int maxCount=0;
-
-    	for (int i = 0; i < a.length; i++) {
-
-        int count = 0;
-        for (int j = 0; j < a.length; j++) {
-            if (a[j] == a[i]) count++;
-        }
-        if (count > maxCount) {
-            maxCount = count;
-            value = a[i];
-        } 
-    }
-
-    	return value;
+		int temporary, counter, number;
+		counter=0;
+		number=0;
+		for (int i=0; i<a.length; i++) {
+			temporary=0;
+			for (int k=0; k<a.length; k++) {
+				if(a[i]==a[k]) {
+					temporary++;
+					if(counter<temporary) {
+						counter=temporary;
+						number=a[i];
+					}
+				}
+			}
+		}
+		return number;
 	}
 
 	public static double standardDeviation(int[] a) {
